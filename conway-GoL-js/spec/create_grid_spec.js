@@ -1,4 +1,4 @@
-const { create_grid } = require("../src/create_grid");
+const { create_grid } = require("../src/components/create_grid");
 
 describe("create_grid", function () {
   describe("returns a 0 filled 2D array", function () {

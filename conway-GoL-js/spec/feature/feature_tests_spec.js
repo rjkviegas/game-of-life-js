@@ -1,4 +1,4 @@
-const { create_grid } = require("../../src/create_grid");
+const { create_grid } = require("../../src/components/create_grid");
 
 describe('Feature Test', function() {
   describe('create_grid', function() {

@@ -1,4 +1,4 @@
-const { make_cell_dead } = require("../src/make_cell_dead")
+const { make_cell_dead } = require("../src/components/make_cell_dead")
 
 describe("make_cell_dead", function () {
   describe("change value from 1 to 0", function () {
