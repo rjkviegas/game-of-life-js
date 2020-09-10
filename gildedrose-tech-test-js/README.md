@@ -29,13 +29,13 @@ Run feature tests:
 ```
 npx jasmine ./spec/feature/feature_tests_spec.js
 ```
-Run texttest_fixture
+Run texttest fixture test
 ```
 npx jasmine ./spec/texttest_fixture_spec.js
 ```
 Run unit tests:
 ```
-npx jasmine ,/spec/item_identifier_spec.js
+npx jasmine ./spec/item_identifier_spec.js
 ```
 
 ### Properties of Existing System
