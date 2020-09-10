@@ -6,5 +6,9 @@ describe("is_alive", function () {
       const grid = [[1, 0], [0, 0]];
       expect(is_alive(grid, 0, 0)).toBeTrue();
     });
+    it("returns false when grid element is 0", function () {
+      const grid = [[0, 1], [1, 1]];
+      expect(is_alive(grid, 0, 0)).toBeFalse();
+    });
   });
 });
