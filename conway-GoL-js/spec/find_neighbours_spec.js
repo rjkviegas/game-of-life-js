@@ -10,5 +10,10 @@ describe("find_north_neighbour", function () {
       const grid = [[0, 0], [0, 1]];
       expect(find_north_neighbour(grid, 1, 1)).toEqual([0, 1]);
     });
+    it("returns undefined if no north neighbour exists", function () {
+      const grid = [[0, 0], [0, 0]];
+      expect(find_north_neighbour(grid, 0, 0)).toBeUndefined();
+      expect(find_north_neighbour(grid, 0, 0)).not.toBeDefined();
+    });
   });
 });
