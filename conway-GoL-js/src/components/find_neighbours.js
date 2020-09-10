@@ -1,5 +1,5 @@
 const find_north_neighbour = function (grid, y, x) {
-  return [0, 0];
+  return [y-1, x];
 };
 
 module.exports = { find_north_neighbour };
