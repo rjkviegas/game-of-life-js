@@ -1,4 +1,4 @@
-const create_grid = function(cols, rows) {
+const create_grid = function (cols, rows) {
   const grid = [];
   for(let i = 0; i < rows; i += 1) {
     let row = [];

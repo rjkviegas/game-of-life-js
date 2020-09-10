@@ -1,4 +1,4 @@
-const make_cell_dead = function(grid, y, x) {
+const make_cell_dead = function (grid, y, x) {
   grid[y][x] = 0;
 };
 
