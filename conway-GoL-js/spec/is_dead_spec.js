@@ -6,5 +6,9 @@ describe("is_dead", function () {
       const grid = [[0, 1], [1, 1]];
       expect(is_dead(grid, 0, 0)).toBeTrue();
     });
+    it("returns false when grid element is 1", function () {
+      const grid = [[1, 0], [0, 0]];
+      expect(is_dead(grid, 0, 0)).toBeFalse();
+    });
   });
 });
