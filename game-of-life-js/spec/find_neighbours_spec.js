@@ -23,5 +23,9 @@ describe("find_south_neighbour", function () {
       const grid = [[1, 0], [0, 0]];
       expect(find_south_neighbour(grid, 0, 0)).toEqual([1, 0]);
     });
+    it("for top right element in 2x2 grid", function () {
+      const grid = [[0, 1], [0, 0]];
+      expect(find_south_neighbour(grid, 0, 1)).toEqual([1, 1]);
+    });
   });
 });

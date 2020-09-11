@@ -1,11 +1,11 @@
 const find_north_neighbour = function (grid, y, x) {
   neighbour_y = y - 1;
   if (neighbour_y < 0) { return undefined }
-  return [y-1, x];
+  return [y - 1, x];
 };
 
 const find_south_neighbour = function (grid, y, x) {
-  return [1, 0];
+  return [y + 1, x];
 };
 
 module.exports = { 
