@@ -220,4 +220,18 @@ describe("find_neighbour", function () {
       expect(neighbour_finder.south_east()).not.toBeDefined();
     });
   });
+  describe("south_west", function () {
+    it("for for right cell in 2x2 grid", function () {
+      const spec = {
+        grid: [[0, "cell"],
+               ["south west neighbour", 0]],
+        x: 1,
+        y: 0
+      };
+      expect(spec.grid[0][1]).toEqual("cell");
+      const neighbour_finder = neighbour_finder_constructor(spec);
+      expect(neighbour_finder.south_west()).toEqual([1, 0]);
+      expect(spec.grid[1][0]).toEqual("south west neighbour");
+    });
+  });
 });
