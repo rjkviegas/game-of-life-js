@@ -32,7 +32,7 @@ describe("find_north_neighbour", function () {
   });
 });
 describe("find_south_neighbour", function () {
-  describe("returns co-ordinateof grid element directly below", function () {
+  describe("returns co-ordinate of grid element directly below", function () {
     it("for top left element in 2x2 grid", function () {
       const grid = [
         [1, 0],
@@ -50,6 +50,15 @@ describe("find_south_neighbour", function () {
       expect(grid[0][1]);
       expect(find_south_neighbour(grid, 0, 1)).toEqual([1, 1]);
       expect(grid[1][1]).toEqual(2);
+    });
+    it("returns undefined if no south neighbour exists", function () {
+      const grid = [
+        [0, 0],
+        [1, 0]
+      ];
+      expect(grid[1][0]).toEqual(1);
+      expect(find_south_neighbour(grid, 1, 0)).toBeUndefined();
+      expect(find_south_neighbour(grid, 1, 0)).not.toBeDefined();
     });
   });
 });
