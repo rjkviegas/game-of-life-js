@@ -140,5 +140,17 @@ describe("find_neighbour", function () {
       expect(neighbour_finder.west()).toEqual([1, 0]);
       expect(spec.grid[1][0]).toEqual("west neighbour");
     });
+    it("returns undefined if no west neighbour exists", function () {
+      const spec = {
+        grid: [[0, 0],
+               ["cell", 0]],
+        x: 0,
+        y: 1
+      };
+      expect(spec.grid[1][0]).toEqual("cell");
+      const neighbour_finder = neighbour_finder_constructor (spec);
+      expect(neighbour_finder.west()).toBeUndefined();
+      expect(neighbour_finder.west()).not.toBeDefined();
+    });
   });
 });
