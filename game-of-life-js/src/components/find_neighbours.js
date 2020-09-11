@@ -9,8 +9,9 @@ function neighbour_finder_constructor (spec) {
     return [y + 1, x];
   };
   const east = function () {
+    if (x + 1 >= grid[y].length) { return undefined }
     return [y, x + 1];
-  }
+  };
   return Object.freeze({
     north,
     south,
