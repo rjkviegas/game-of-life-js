@@ -31,7 +31,7 @@ function neighbour_finder_constructor(spec) {
         return [y - 1, x + 1];
     };
     const south_east = function () {
-        if (y + 1 >= grid.length || x + 1 > grid[y].length) {
+        if (y + 1 >= grid.length || x + 1 >= grid[y].length) {
             return undefined;
         }
         return [y + 1, x + 1];
@@ -43,7 +43,7 @@ function neighbour_finder_constructor(spec) {
         return [y + 1, x - 1];
     };
     const north_west = function () {
-        if (y - 1 < 0 || x -1 < 0) {
+        if (y - 1 < 0 || x - 1 < 0) {
           return undefined;
         }
         return [y - 1, x - 1];
