@@ -19,7 +19,7 @@ function neighbour_finder_constructor(spec) {
         return [y, x + 1];
     };
     const west = function () {
-        return [0, 0];
+        return [y, x - 1];
     };
     return Object.freeze({
         north,

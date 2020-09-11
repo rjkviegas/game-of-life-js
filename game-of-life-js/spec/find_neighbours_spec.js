@@ -128,5 +128,17 @@ describe("find_neighbour", function () {
       expect(neighbour_finder.west()).toEqual([0, 0]);
       expect(spec.grid[0][0]).toEqual("west neighbour");
     });
+    it("for bottom right element in 2x2 grid", function () {
+      const spec = {
+        grid: [[0, 0],
+               ["west neighbour", "cell"]],
+        x: 1,
+        y: 1
+      };
+      expect(spec.grid[1][1]).toEqual("cell");
+      const neighbour_finder = neighbour_finder_constructor (spec);
+      expect(neighbour_finder.west()).toEqual([1, 0]);
+      expect(spec.grid[1][0]).toEqual("west neighbour");
+    });
   });
 });
