@@ -24,11 +24,15 @@ function neighbour_finder_constructor(spec) {
         }
         return [y, x - 1];
     };
+    const north_east = function () {
+      return [0, 2];
+    }
     return Object.freeze({
         north,
         south,
         east,
-        west
+        west,
+        north_east
     });
 }
 

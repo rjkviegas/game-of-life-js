@@ -10,7 +10,7 @@ describe("find_neighbour", function () {
         y: 1
       };
       expect(spec.grid[spec.y][spec.x]).toEqual("cell");
-      const neighbour_finder = neighbour_finder_constructor (spec);
+      const neighbour_finder = neighbour_finder_constructor(spec);
       expect(neighbour_finder.north()).toEqual([0, 0]);
       expect(spec.grid[0][0]).toEqual("north neighbour");
     });
@@ -22,7 +22,7 @@ describe("find_neighbour", function () {
         y: 1
       };
       expect(spec.grid[spec.y][spec.x]).toEqual("cell");
-      const neighbour_finder = neighbour_finder_constructor (spec);
+      const neighbour_finder = neighbour_finder_constructor(spec);
       expect(neighbour_finder.north()).toEqual([0, 1]);
       expect(spec.grid[0][1]).toEqual("north neighbour");
     });
@@ -34,7 +34,7 @@ describe("find_neighbour", function () {
         y: 0
       };
       expect(spec.grid[spec.y][spec.x]).toEqual("cell");
-      const neighbour_finder = neighbour_finder_constructor (spec);
+      const neighbour_finder = neighbour_finder_constructor(spec);
       expect(neighbour_finder.north()).toBeUndefined();
       expect(neighbour_finder.north()).not.toBeDefined();
     });
@@ -48,7 +48,7 @@ describe("find_neighbour", function () {
         y: 0
       };
       expect(spec.grid[spec.y][spec.x]).toEqual("cell");
-      const neighbour_finder = neighbour_finder_constructor (spec);
+      const neighbour_finder = neighbour_finder_constructor(spec);
       expect(neighbour_finder.south()).toEqual([1, 0]);
       expect(spec.grid[1][0]).toEqual("south neighbour");
     });
@@ -60,7 +60,7 @@ describe("find_neighbour", function () {
         y: 0
       };
       expect(spec.grid[spec.y][spec.x]).toEqual("cell");
-      const neighbour_finder = neighbour_finder_constructor (spec);
+      const neighbour_finder = neighbour_finder_constructor(spec);
       expect(neighbour_finder.south()).toEqual([1, 1]);
       expect(spec.grid[1][1]).toEqual("south neighbour");
     });
@@ -72,7 +72,7 @@ describe("find_neighbour", function () {
         y: 1
       };
       expect(spec.grid[spec.y][spec.x]).toEqual("cell");
-      const neighbour_finder = neighbour_finder_constructor (spec);
+      const neighbour_finder = neighbour_finder_constructor(spec);
       expect(neighbour_finder.south()).toBeUndefined();
       expect(neighbour_finder.south()).not.toBeDefined();
     });
@@ -86,7 +86,7 @@ describe("find_neighbour", function () {
         y: 0
       };
       expect(spec.grid[0][0]).toEqual("cell");
-      const neighbour_finder = neighbour_finder_constructor (spec);
+      const neighbour_finder = neighbour_finder_constructor(spec);
       expect(neighbour_finder.east()).toEqual([0, 1]);
       expect(spec.grid[0][1]).toEqual("east neighbour");
     });
@@ -98,7 +98,7 @@ describe("find_neighbour", function () {
         y: 1
       };
       expect(spec.grid[1][0]).toEqual("cell");
-      const neighbour_finder = neighbour_finder_constructor (spec);
+      const neighbour_finder = neighbour_finder_constructor(spec);
       expect(neighbour_finder.east()).toEqual([1, 1]);
       expect(spec.grid[1][1]).toEqual("east neighbour");
     });
@@ -110,7 +110,7 @@ describe("find_neighbour", function () {
         y: 1
       };
       expect(spec.grid[spec.y][spec.x]).toEqual("cell");
-      const neighbour_finder = neighbour_finder_constructor (spec);
+      const neighbour_finder = neighbour_finder_constructor(spec);
       expect(neighbour_finder.east()).toBeUndefined();
       expect(neighbour_finder.east()).not.toBeDefined();
     });
@@ -124,7 +124,7 @@ describe("find_neighbour", function () {
         y: 0
       };
       expect(spec.grid[0][1]).toEqual("cell");
-      const neighbour_finder = neighbour_finder_constructor (spec);
+      const neighbour_finder = neighbour_finder_constructor(spec);
       expect(neighbour_finder.west()).toEqual([0, 0]);
       expect(spec.grid[0][0]).toEqual("west neighbour");
     });
@@ -136,7 +136,7 @@ describe("find_neighbour", function () {
         y: 1
       };
       expect(spec.grid[1][1]).toEqual("cell");
-      const neighbour_finder = neighbour_finder_constructor (spec);
+      const neighbour_finder = neighbour_finder_constructor(spec);
       expect(neighbour_finder.west()).toEqual([1, 0]);
       expect(spec.grid[1][0]).toEqual("west neighbour");
     });
@@ -148,9 +148,24 @@ describe("find_neighbour", function () {
         y: 1
       };
       expect(spec.grid[1][0]).toEqual("cell");
-      const neighbour_finder = neighbour_finder_constructor (spec);
+      const neighbour_finder = neighbour_finder_constructor(spec);
       expect(neighbour_finder.west()).toBeUndefined();
       expect(neighbour_finder.west()).not.toBeDefined();
     });
+  });
+  describe("north_east", function () {
+    it("for center cell in 3x3 grid", function () {
+      const spec = {
+        grid: [[0, 0, "north east neighbour"],
+               [0, "cell", 0],
+               [0, 0, 0]],
+        x: 1,
+        y: 1
+      };
+      expect(spec.grid[1][1]).toEqual("cell");
+      const neighbour_finder = neighbour_finder_constructor(spec);
+      expect(neighbour_finder.north_east()).toEqual([0, 2]);
+      expect(spec.grid[0][2]).toEqual("north east neighbour");
+    })
   });
 });
