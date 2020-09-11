@@ -179,5 +179,18 @@ describe("find_neighbour", function () {
       expect(neighbour_finder.north_east()).toEqual([0, 2]);
       expect(spec.grid[0][2]).toEqual("north east neighbour");
     })
+    it("returns undefined if no north east neighbour exists", function () {
+      const spec = {
+        grid: [[0, 0, 0],
+               [0, 0, "cell"],
+               [0, 0, 0]],
+        x: 2,
+        y: 1
+      };
+      expect(spec.grid[1][2]).toEqual("cell");
+      const neighbour_finder = neighbour_finder_constructor(spec);
+      expect(neighbour_finder.north_east()).toBeUndefined();
+      expect(neighbour_finder.north_east()).not.toBeDefined()
+    })
   });
 });

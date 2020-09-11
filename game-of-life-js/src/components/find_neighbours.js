@@ -25,7 +25,10 @@ function neighbour_finder_constructor(spec) {
         return [y, x - 1];
     };
     const north_east = function () {
-      return [y - 1, x + 1];
+        if (y - 1 < 0 || x + 1 >= grid[y].length) {
+          return undefined;
+        }
+        return [y - 1, x + 1];
     }
     return Object.freeze({
         north,
