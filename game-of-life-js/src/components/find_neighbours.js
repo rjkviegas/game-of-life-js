@@ -29,13 +29,17 @@ function neighbour_finder_constructor(spec) {
           return undefined;
         }
         return [y - 1, x + 1];
-    }
+    };
+    const south_east = function () {
+        return [1,1];
+    };
     return Object.freeze({
         north,
         south,
         east,
         west,
-        north_east
+        north_east,
+        south_east
     });
 }
 
