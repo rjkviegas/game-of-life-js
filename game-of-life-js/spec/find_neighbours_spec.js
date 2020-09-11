@@ -221,7 +221,7 @@ describe("find_neighbour", function () {
     });
   });
   describe("south_west", function () {
-    it("for for right cell in 2x2 grid", function () {
+    it("for top right cell in 2x2 grid", function () {
       const spec = {
         grid: [[0, "cell"],
                ["south west neighbour", 0]],
@@ -233,5 +233,18 @@ describe("find_neighbour", function () {
       expect(neighbour_finder.south_west()).toEqual([1, 0]);
       expect(spec.grid[1][0]).toEqual("south west neighbour");
     });
+    it("for center cell of 3x3 grid", function () {
+      const spec = {
+        grid: [[0, 0, 0],
+               [0, "cell", 0],
+               ["south west neighbour", 0, 0]],
+        x: 1,
+        y: 1
+      };
+      expect(spec.grid[1][1]).toEqual("cell");
+      const neighbour_finder = neighbour_finder_constructor(spec);
+      expect(neighbour_finder.south_west()).toEqual([2, 0]);
+      expect(spec.grid[2][0]).toEqual("south west neighbour");
+    })
   });
 });
