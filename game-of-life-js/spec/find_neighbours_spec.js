@@ -206,5 +206,18 @@ describe("find_neighbour", function () {
       expect(neighbour_finder.south_east()).toEqual([1, 1]);
       expect(spec.grid[1][1]).toEqual("south east neighbour");
     });
+    it("for center cell of 3x3 grid", function () {
+      const spec = {
+        grid: [[0, 0, 0],
+               [0, "cell", 0],
+               [0, 0, "south east neighbour"]],
+        x: 1,
+        y: 1
+      };
+      expect(spec.grid[1][1]).toEqual("cell");
+      const neighbour_finder = neighbour_finder_constructor(spec);
+      expect(neighbour_finder.south_east()).toEqual([2, 2]);
+      expect(spec.grid[2][2]).toEqual("south east neighbour");
+    });
   });
 });
