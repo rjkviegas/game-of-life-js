@@ -81,7 +81,7 @@ describe("find_neighbour", function () {
     it("for top left element in 2x2 grid", function () {
       const spec = {
         grid: [["cell", "east neighbour"],
-              [0, 0]],
+               [0, 0]],
         x: 0,
         y: 0
       };
@@ -93,7 +93,7 @@ describe("find_neighbour", function () {
     it("for bottom left element in 2x2 grid", function () {
       const spec = {
         grid: [[0, 0],
-                ["cell", "east neighbour"]],
+               ["cell", "east neighbour"]],
         x: 0,
         y: 1
       };
@@ -113,6 +113,20 @@ describe("find_neighbour", function () {
       const neighbour_finder = neighbour_finder_constructor (spec);
       expect(neighbour_finder.east()).toBeUndefined();
       expect(neighbour_finder.east()).not.toBeDefined();
+    });
+  });
+  describe("west", function () {
+    it("for top right element in 2x2 grid", function () {
+      const spec = {
+        grid: [["west neighbour", "cell"],
+               [0, 0]],
+        x: 1,
+        y: 0
+      };
+      expect(spec.grid[0][1]).toEqual("cell");
+      const neighbour_finder = neighbour_finder_constructor (spec);
+      expect(neighbour_finder.west()).toEqual([0, 0]);
+      expect(spec.grid[0][0]).toEqual("west neighbour");
     });
   });
 });
