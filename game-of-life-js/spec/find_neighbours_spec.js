@@ -1,64 +1,94 @@
-const { find_north_neighbour, find_south_neighbour } = require("../src/components/find_neighbours");
+const { neighbour_finder_constructor } = require("../src/components/find_neighbours");
 
-describe("find_north_neighbour", function () {
-  describe("returns co-ordinate of grid element directly above", function () {
+describe("find_neighbour", function () {
+  describe("north", function () {
     it("for bottom left element in 2x2 grid", function () {
-      const grid = [
-        [2, 0],
-        [1, 0]
-      ];
-      expect(grid[1][0]).toEqual(1);
-      expect(find_north_neighbour(grid, 1, 0)).toEqual([0, 0]);
-      expect(grid[0][0]).toEqual(2);
+      const spec = { 
+        grid: [["north neighbour", 0],
+               ["cell", 0]],
+        x: 0,
+        y: 1
+      };
+      expect(spec.grid[spec.y][spec.x]).toEqual("cell");
+      const neighbour_finder = neighbour_finder_constructor (spec);
+      expect(neighbour_finder.north()).toEqual([0, 0]);
+      expect(spec.grid[0][0]).toEqual("north neighbour");
     });
     it("for bottom right element in 2x2 grid", function () {
-      const grid = [
-        [0, 2],
-        [0, 1]
-      ];
-      expect(grid[1][1]).toEqual(1);
-      expect(find_north_neighbour(grid, 1, 1)).toEqual([0, 1]);
-      expect(grid[0][1]).toEqual(2);
+      const spec = {
+        grid: [[0, "north neighbour"],
+               [0, "cell"]],
+        x: 1,
+        y: 1
+      };
+      expect(spec.grid[spec.y][spec.x]).toEqual("cell");
+      const neighbour_finder = neighbour_finder_constructor (spec);
+      expect(neighbour_finder.north()).toEqual([0, 1]);
+      expect(spec.grid[0][1]).toEqual("north neighbour");
     });
     it("returns undefined if no north neighbour exists", function () {
-      const grid = [
-        [1, 0],
-        [0, 0]
-      ];
-      expect(grid[0][0]).toEqual(1);
-      expect(find_north_neighbour(grid, 0, 0)).toBeUndefined();
-      expect(find_north_neighbour(grid, 0, 0)).not.toBeDefined();
+      const spec = {
+        grid: [["cell", 0],
+               [0, 0]],
+        x: 0,
+        y: 0
+      };
+      expect(spec.grid[spec.y][spec.x]).toEqual("cell");
+      const neighbour_finder = neighbour_finder_constructor (spec);
+      expect(neighbour_finder.north()).toBeUndefined();
+      expect(neighbour_finder.north()).not.toBeDefined();
     });
   });
-});
-describe("find_south_neighbour", function () {
-  describe("returns co-ordinate of grid element directly below", function () {
+  describe("south", function () {
     it("for top left element in 2x2 grid", function () {
-      const grid = [
-        [1, 0],
-        [2, 0]
-      ];
-      expect(grid[0][0]).toEqual(1);
-      expect(find_south_neighbour(grid, 0, 0)).toEqual([1, 0]);
-      expect(grid[1][0]).toEqual(2);
+      const spec = {
+        grid: [["cell", 0],
+               ["south neighbour", 0]],
+        x: 0,
+        y: 0
+      };
+      expect(spec.grid[spec.y][spec.x]).toEqual("cell");
+      const neighbour_finder = neighbour_finder_constructor (spec);
+      expect(neighbour_finder.south()).toEqual([1, 0]);
+      expect(spec.grid[1][0]).toEqual("south neighbour");
     });
     it("for top right element in 2x2 grid", function () {
-      const grid = [
-        [0, 1],
-        [0, 2]
-      ];
-      expect(grid[0][1]);
-      expect(find_south_neighbour(grid, 0, 1)).toEqual([1, 1]);
-      expect(grid[1][1]).toEqual(2);
+      const spec = {
+        grid: [[0, "cell"],
+               [0, "south neighbour"]],
+        x: 1,
+        y: 0
+      };
+      expect(spec.grid[spec.y][spec.x]).toEqual("cell");
+      const neighbour_finder = neighbour_finder_constructor (spec);
+      expect(neighbour_finder.south()).toEqual([1, 1]);
+      expect(spec.grid[1][1]).toEqual("south neighbour");
     });
     it("returns undefined if no south neighbour exists", function () {
-      const grid = [
-        [0, 0],
-        [1, 0]
-      ];
-      expect(grid[1][0]).toEqual(1);
-      expect(find_south_neighbour(grid, 1, 0)).toBeUndefined();
-      expect(find_south_neighbour(grid, 1, 0)).not.toBeDefined();
+      const spec = {
+        grid: [[0, 0],
+               ["cell", 0]],
+        x: 0,
+        y: 1
+      };
+      expect(spec.grid[spec.y][spec.x]).toEqual("cell");
+      const neighbour_finder = neighbour_finder_constructor (spec);
+      expect(neighbour_finder.south()).toBeUndefined();
+      expect(neighbour_finder.south()).not.toBeDefined();
     });
   });
+  describe("east", function () {
+      it("for top left element in 2x2 grid", function () {
+        const spec = {
+          grid: [["cell", "east neighbour"],
+                [0, 0]],
+          x: 0,
+          y: 0
+        };
+        expect(spec.grid[0][0]).toEqual("cell");
+        const neighbour_finder = neighbour_finder_constructor (spec);
+        expect(neighbour_finder.east()).toEqual([0, 1]);
+        expect(spec.grid[0][1]).toEqual("east neighbour");
+      });
+    });
 });

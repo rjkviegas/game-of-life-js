@@ -1,16 +1,23 @@
-const find_north_neighbour = function (grid, y, x) {
-  neighbour_y = y - 1;
-  if (neighbour_y < 0) { return undefined }
-  return [neighbour_y, x];
-};
-
-const find_south_neighbour = function (grid, y, x) {
-  neighbour_y = y + 1;
-  if (neighbour_y >= grid.length) { return undefined }
-  return [neighbour_y, x];
-};
+function neighbour_finder_constructor (spec) {
+  let {grid, x, y} = spec;
+  const north = function () {
+    if (y === 0) { return undefined }
+    return [y - 1, x];
+  };
+  const south = function () {
+    if (y + 1 >= grid.length) { return undefined }
+    return [y + 1, x];
+  };
+  const east = function () {
+    return [0, 1];
+  }
+  return Object.freeze({
+    north,
+    south,
+    east
+  });
+}
 
 module.exports = { 
-  find_north_neighbour,
-  find_south_neighbour 
+  neighbour_finder_constructor
 };
