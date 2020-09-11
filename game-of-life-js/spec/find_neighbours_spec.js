@@ -78,17 +78,29 @@ describe("find_neighbour", function () {
     });
   });
   describe("east", function () {
-      it("for top left element in 2x2 grid", function () {
-        const spec = {
-          grid: [["cell", "east neighbour"],
-                [0, 0]],
-          x: 0,
-          y: 0
-        };
-        expect(spec.grid[0][0]).toEqual("cell");
-        const neighbour_finder = neighbour_finder_constructor (spec);
-        expect(neighbour_finder.east()).toEqual([0, 1]);
-        expect(spec.grid[0][1]).toEqual("east neighbour");
-      });
+    it("for top left element in 2x2 grid", function () {
+      const spec = {
+        grid: [["cell", "east neighbour"],
+              [0, 0]],
+        x: 0,
+        y: 0
+      };
+      expect(spec.grid[0][0]).toEqual("cell");
+      const neighbour_finder = neighbour_finder_constructor (spec);
+      expect(neighbour_finder.east()).toEqual([0, 1]);
+      expect(spec.grid[0][1]).toEqual("east neighbour");
     });
+    it("for bottom left element in 2x2 grid", function () {
+      const spec = {
+        grid: [[0, 0],
+                ["cell", "east neighbour"]],
+        x: 0,
+        y: 1
+      };
+      expect(spec.grid[1][0]).toEqual("cell");
+      const neighbour_finder = neighbour_finder_constructor (spec);
+      expect(neighbour_finder.east()).toEqual([1, 1]);
+      expect(spec.grid[1][1]).toEqual("east neighbour");
+    });
+  });
 });

@@ -9,7 +9,7 @@ function neighbour_finder_constructor (spec) {
     return [y + 1, x];
   };
   const east = function () {
-    return [0, 1];
+    return [y, x + 1];
   }
   return Object.freeze({
     north,
