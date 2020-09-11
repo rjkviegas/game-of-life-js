@@ -154,6 +154,18 @@ describe("find_neighbour", function () {
     });
   });
   describe("north_east", function () {
+    it("for bottom left in 2x2 grid", function () {
+      const spec = {
+        grid: [[0, "north east neighbour"],
+               ["cell", 0]],
+        x: 0,
+        y: 1
+      };
+      expect(spec.grid[1][0]).toEqual("cell");
+      const neighbour_finder = neighbour_finder_constructor(spec);
+      expect(neighbour_finder.north_east()).toEqual([0, 1]);
+      expect(spec.grid[0][1]).toEqual("north east neighbour");
+    })
     it("for center cell in 3x3 grid", function () {
       const spec = {
         grid: [[0, 0, "north east neighbour"],
