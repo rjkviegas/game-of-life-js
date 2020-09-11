@@ -43,7 +43,7 @@ function neighbour_finder_constructor(spec) {
         return [y + 1, x - 1];
     };
     const north_west = function () {
-        return [0,0];
+        return [y - 1, x - 1];
     };
     return Object.freeze({
         north,
