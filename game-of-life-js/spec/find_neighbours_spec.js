@@ -285,5 +285,17 @@ describe("find_neighbour", function () {
       expect(neighbour_finder.north_west()).toEqual([1, 1]);
       expect(spec.grid[1][1]).toEqual("north west neighbour");
     });
+    it("returns undefined if no north west neighbour exists", function () {
+      const spec = {
+        grid: [["cell", 0],
+               [0, 0]],
+        x: 0,
+        y: 0
+      };
+      expect(spec.grid[0][0]).toEqual("cell");
+      const neighbour_finder = neighbour_finder_constructor(spec);
+      expect(neighbour_finder.north_west()).toBeUndefined();
+      expect(neighbour_finder.north_west()).not.toBeDefined();
+    });
   });
 });
