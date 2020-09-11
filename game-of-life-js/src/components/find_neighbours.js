@@ -20,23 +20,26 @@ function neighbour_finder_constructor(spec) {
     };
     const west = function () {
         if (x - 1 < 0) {
-          return undefined;
+            return undefined;
         }
         return [y, x - 1];
     };
     const north_east = function () {
         if (y - 1 < 0 || x + 1 >= grid[y].length) {
-          return undefined;
+            return undefined;
         }
         return [y - 1, x + 1];
     };
     const south_east = function () {
         if (y + 1 >= grid.length || x + 1 > grid[y].length) {
-          return undefined;
+            return undefined;
         }
         return [y + 1, x + 1];
     };
     const south_west = function () {
+        if (y + 1 >= grid.length || x - 1 < 0) {
+            return undefined;
+        }
         return [y + 1, x - 1];
     };
     return Object.freeze({

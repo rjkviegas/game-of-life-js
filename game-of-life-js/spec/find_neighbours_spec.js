@@ -206,7 +206,7 @@ describe("find_neighbour", function () {
       expect(neighbour_finder.south_east()).toEqual([1, 1]);
       expect(spec.grid[1][1]).toEqual("south east neighbour");
     });
-    it("returns undefined if no south east enighbour exists", function () {
+    it("returns undefined if no south east neighbour exists", function () {
       const spec = {
         grid: [[0, 0, 0],
                [0, 0, 0],
@@ -246,5 +246,17 @@ describe("find_neighbour", function () {
       expect(neighbour_finder.south_west()).toEqual([2, 0]);
       expect(spec.grid[2][0]).toEqual("south west neighbour");
     })
+    it("returns undefined if no south west neighbour exists", function () {
+      const spec = {
+        grid: [[0, 0],
+               ["cell", 0]],
+        x: 0,
+        y: 1
+      };
+      expect(spec.grid[1][0]).toEqual("cell");
+      const neighbour_finder = neighbour_finder_constructor(spec);
+      expect(neighbour_finder.south_west()).toBeUndefined();
+      expect(neighbour_finder.south_west()).not.toBeDefined();
+    });
   });
 });
