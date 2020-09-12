@@ -10,7 +10,7 @@ function neighbour_finder_constructor(spec) {
         if (y + 1 >= grid.length) {
             return undefined;
         }
-        return [y + 1, x];
+        return { y: y + 1, x: x };
     };
     const east = function () {
         if (x + 1 >= grid[y].length) {
