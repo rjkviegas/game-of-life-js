@@ -22,7 +22,7 @@ function neighbour_finder_constructor(spec) {
         if (x - 1 < 0) {
             return undefined;
         }
-        return [y, x - 1];
+        return { y, x: x - 1 };
     };
     const north_east = function () {
         if (y - 1 < 0 || x + 1 >= grid[y].length) {

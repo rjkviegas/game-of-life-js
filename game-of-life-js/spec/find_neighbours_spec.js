@@ -131,8 +131,9 @@ describe("find_neighbour", function () {
       };
       expect(spec.grid[0][1]).toEqual("cell");
       const neighbour_finder = neighbour_finder_constructor(spec);
-      expect(neighbour_finder.west()).toEqual([0, 0]);
-      expect(spec.grid[0][0]).toEqual("west neighbour");
+      const coordinates = { y: 0, x: 0 };
+      expect(neighbour_finder.west()).toEqual(coordinates);
+      expect(spec.grid[coordinates.y][coordinates.x]).toEqual("west neighbour");
     });
     it("for bottom right element in 2x2 grid", function () {
       const spec = {
@@ -143,8 +144,9 @@ describe("find_neighbour", function () {
       };
       expect(spec.grid[1][1]).toEqual("cell");
       const neighbour_finder = neighbour_finder_constructor(spec);
-      expect(neighbour_finder.west()).toEqual([1, 0]);
-      expect(spec.grid[1][0]).toEqual("west neighbour");
+      const coordinates = { y: 1, x: 0 };
+      expect(neighbour_finder.west()).toEqual(coordinates);
+      expect(spec.grid[coordinates.y][coordinates.x]).toEqual("west neighbour");
     });
     it("returns undefined if no west neighbour exists", function () {
       const spec = {
@@ -391,7 +393,7 @@ describe("find_neighbour", function () {
         south_east: undefined,
         south: { y: 1, x: 1 },
         south_west: [1, 0],
-        west: [0, 0],
+        west: { y: 0, x: 0 },
         north_west: undefined
       };
       expect(neighbour_finder.all()).toEqual(neighbours)
@@ -412,7 +414,7 @@ describe("find_neighbour", function () {
         south_east: undefined,
         south: undefined,
         south_west: undefined,
-        west: [1, 0],
+        west: {y: 1, x: 0 },
         north_west: [0, 0]
       };
       expect(neighbour_finder.all()).toEqual(neighbours)
@@ -434,7 +436,7 @@ describe("find_neighbour", function () {
         south_east: [2, 2],
         south: { y: 2, x: 1 },
         south_west: [2, 0],
-        west: [1, 0],
+        west: { y: 1, x: 0 },
         north_west: [0, 0]
       };
       expect(neighbour_finder.all()).toEqual(neighbours)
