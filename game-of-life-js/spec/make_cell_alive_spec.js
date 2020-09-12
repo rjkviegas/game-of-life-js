@@ -1,10 +1,17 @@
-const { make_cell_alive } = require("../src/components/make_cell_alive")
+const { status_changer_constructor } = require("../src/components/make_cell_alive")
 
-describe("make_cell_alive", function () {
-  describe("change value from 0 to 1", function () {
-    it("for grid[0][0] when it receives grid, 0, 0", function () {
-      const grid = [[0, 0], [0, 0]];
-      make_cell_alive(grid, 0, 0);
+describe("status_changer", function () {
+  describe("make_alive", function () {
+    it("for top left cell of 2x2", function () {
+      const grid = [[0, 0],
+                    [0, 0]];
+      const spec = {
+        grid,
+        y: 0,
+        x: 0
+      };
+      const status_changer = status_changer_constructor(spec);
+      status_changer.make_alive();
       expect(grid[0][0]).toEqual(1);
       expect(grid[0][0]).not.toEqual(0);
     });

@@ -1,4 +1,4 @@
-const { cell_checker_constructor } = require("../src/components/cell_checker");
+const { cell_checker_constructor } = require("../src/components/is_alive");
 
 describe("cell_checker", function () {
   describe("is_alive", function () {
