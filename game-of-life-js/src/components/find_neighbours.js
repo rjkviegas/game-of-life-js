@@ -4,19 +4,19 @@ function neighbour_finder_constructor(spec) {
         if (y === 0) {
             return undefined;
         }
-        return { y: y - 1, x: x };
+        return { y: y - 1, x };
     };
     const south = function () {
         if (y + 1 >= grid.length) {
             return undefined;
         }
-        return { y: y + 1, x: x };
+        return { y: y + 1, x };
     };
     const east = function () {
         if (x + 1 >= grid[y].length) {
             return undefined;
         }
-        return [y, x + 1];
+        return { y, x: x + 1 };
     };
     const west = function () {
         if (x - 1 < 0) {
