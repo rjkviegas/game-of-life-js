@@ -369,5 +369,47 @@ describe("find_neighbour", function () {
       };
       expect(neighbour_finder.all()).toEqual(neighbours)
     });
+    it("for top right cell in a 2x2 grid", function () {
+      const spec = {
+        grid: [["west neighbour", "cell"],
+               ["south west neighbour", "south neighbour"]],
+        x: 1,
+        y: 0
+      };
+      expect(spec.grid[0][1]).toEqual("cell");
+      const neighbour_finder = neighbour_finder_constructor(spec);
+      const neighbours = {
+        north: undefined,
+        north_east: undefined,
+        east: undefined,
+        south_east: undefined,
+        south: [1, 1],
+        south_west: [1, 0],
+        west: [0, 0],
+        north_west: undefined
+      };
+      expect(neighbour_finder.all()).toEqual(neighbours)
+    });
+    it("for bottom right cell in 2x2 grid", function () {
+      const spec = {
+        grid: [["north west neighbour", "north neighbour"],
+               ["west neighbour", "cell"]],
+        x: 1,
+        y: 1
+      };
+      expect(spec.grid[1][1]).toEqual("cell");
+      const neighbour_finder = neighbour_finder_constructor(spec);
+      const neighbours = {
+        north: [0, 1],
+        north_east: undefined,
+        east: undefined,
+        south_east: undefined,
+        south: undefined,
+        south_west: undefined,
+        west: [1, 0],
+        north_west: [0, 0]
+      };
+      expect(neighbour_finder.all()).toEqual(neighbours)
+    });
   });
 });

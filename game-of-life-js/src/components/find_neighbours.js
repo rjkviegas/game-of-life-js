@@ -50,14 +50,14 @@ function neighbour_finder_constructor(spec) {
     };
     const all = function () {
         return {
-            north: undefined,
+            north: north(),
             north_east: undefined,
             east: undefined,
             south_east: undefined,
-            south: undefined,
-            south_west: undefined,
-            west: undefined,
-            north_west: undefined
+            south: south(),
+            south_west: south_west(),
+            west: west(),
+            north_west: north_west()
           };
     };
     return Object.freeze({
