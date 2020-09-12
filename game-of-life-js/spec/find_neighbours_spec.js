@@ -226,8 +226,9 @@ describe("find_neighbour", function () {
       };
       expect(spec.grid[0][0]).toEqual("cell");
       const neighbour_finder = neighbour_finder_constructor(spec);
-      expect(neighbour_finder.south_east()).toEqual([1, 1]);
-      expect(spec.grid[1][1]).toEqual("south east neighbour");
+      const coordinates = { y: 1, x: 1 };
+      expect(neighbour_finder.south_east()).toEqual(coordinates);
+      expect(spec.grid[coordinates.y][coordinates.x]).toEqual("south east neighbour");
     });
     it("returns undefined if no south east neighbour exists", function () {
       const spec = {
@@ -266,8 +267,9 @@ describe("find_neighbour", function () {
       };
       expect(spec.grid[0][1]).toEqual("cell");
       const neighbour_finder = neighbour_finder_constructor(spec);
-      expect(neighbour_finder.south_west()).toEqual([1, 0]);
-      expect(spec.grid[1][0]).toEqual("south west neighbour");
+      const coordinates = { y: 1, x: 0 };
+      expect(neighbour_finder.south_west()).toEqual(coordinates);
+      expect(spec.grid[coordinates.y][coordinates.x]).toEqual("south west neighbour");
     });
     it("for center cell of 3x3 grid", function () {
       const spec = {
@@ -279,8 +281,9 @@ describe("find_neighbour", function () {
       };
       expect(spec.grid[1][1]).toEqual("cell");
       const neighbour_finder = neighbour_finder_constructor(spec);
-      expect(neighbour_finder.south_west()).toEqual([2, 0]);
-      expect(spec.grid[2][0]).toEqual("south west neighbour");
+      const coordinates = { y: 2, x: 0 };
+      expect(neighbour_finder.south_west()).toEqual(coordinates);
+      expect(spec.grid[coordinates.y][coordinates.x]).toEqual("south west neighbour");
     });
     it("returns undefined if no south west neighbour exists", function () {
       const spec = {
@@ -394,7 +397,7 @@ describe("find_neighbour", function () {
         east: undefined,
         south_east: undefined,
         south: { y: 1, x: 1 },
-        south_west: [1, 0],
+        south_west: { y: 1, x: 0 },
         west: { y: 0, x: 0 },
         north_west: undefined
       };
@@ -435,9 +438,9 @@ describe("find_neighbour", function () {
         north: { y: 0, x: 1 },
         north_east: { y: 0, x: 2 },
         east: { y: 1, x: 2 },
-        south_east: [2, 2],
+        south_east: { y: 2, x: 2 },
         south: { y: 2, x: 1 },
-        south_west: [2, 0],
+        south_west: { y: 2, x: 0 },
         west: { y: 1, x: 0 },
         north_west: [0, 0]
       };
