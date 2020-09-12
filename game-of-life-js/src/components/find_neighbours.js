@@ -4,7 +4,7 @@ function neighbour_finder_constructor(spec) {
         if (y === 0) {
             return undefined;
         }
-        return [y - 1, x];
+        return { y: y - 1, x: x };
     };
     const south = function () {
         if (y + 1 >= grid.length) {

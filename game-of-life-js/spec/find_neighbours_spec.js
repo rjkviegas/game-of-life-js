@@ -11,8 +11,9 @@ describe("find_neighbour", function () {
       };
       expect(spec.grid[spec.y][spec.x]).toEqual("cell");
       const neighbour_finder = neighbour_finder_constructor(spec);
-      expect(neighbour_finder.north()).toEqual([0, 0]);
-      expect(spec.grid[0][0]).toEqual("north neighbour");
+      const coordinates = { y: 0, x: 0 };
+      expect(neighbour_finder.north()).toEqual(coordinates);
+      expect(spec.grid[coordinates.y][coordinates.x]).toEqual("north neighbour");
     });
     it("for bottom right element in 2x2 grid", function () {
       const spec = {
@@ -23,8 +24,9 @@ describe("find_neighbour", function () {
       };
       expect(spec.grid[spec.y][spec.x]).toEqual("cell");
       const neighbour_finder = neighbour_finder_constructor(spec);
-      expect(neighbour_finder.north()).toEqual([0, 1]);
-      expect(spec.grid[0][1]).toEqual("north neighbour");
+      const coordinates = { y: 0, x: 1 };
+      expect(neighbour_finder.north()).toEqual(coordinates);
+      expect(spec.grid[coordinates.y][coordinates.x]).toEqual("north neighbour");
     });
     it("returns undefined if no north neighbour exists", function () {
       const spec = {
@@ -400,7 +402,7 @@ describe("find_neighbour", function () {
       expect(spec.grid[1][1]).toEqual("cell");
       const neighbour_finder = neighbour_finder_constructor(spec);
       const neighbours = {
-        north: [0, 1],
+        north: { y: 0, x: 1 },
         north_east: undefined,
         east: undefined,
         south_east: undefined,
@@ -422,7 +424,7 @@ describe("find_neighbour", function () {
       expect(spec.grid[1][1]).toEqual("cell");
       const neighbour_finder = neighbour_finder_constructor(spec);
       const neighbours = {
-        north: [0, 1],
+        north: { y: 0, x: 1 },
         north_east: [0, 2],
         east: [1, 2],
         south_east: [2, 2],
