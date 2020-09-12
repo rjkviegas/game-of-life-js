@@ -46,7 +46,7 @@ function neighbour_finder_constructor(spec) {
         if (y - 1 < 0 || x - 1 < 0) {
           return undefined;
         }
-        return [y - 1, x - 1];
+        return { y: y - 1, x: x - 1 };
     };
     const all = function () {
         return {
