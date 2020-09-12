@@ -348,4 +348,26 @@ describe("find_neighbour", function () {
       expect(neighbour_finder.north_west()).not.toBeDefined();
     });
   });
+  describe("all", function () {
+    it("for 1x1 grid", function () {
+      const spec = {
+        grid: [["cell"]],
+        x: 0,
+        y: 0
+      };
+      expect(spec.grid[0][0]).toEqual("cell");
+      const neighbour_finder = neighbour_finder_constructor(spec);
+      const neighbours = {
+        north: undefined,
+        north_east: undefined,
+        east: undefined,
+        south_east: undefined,
+        south: undefined,
+        south_west: undefined,
+        west: undefined,
+        north_west: undefined
+      };
+      expect(neighbour_finder.all()).toEqual(neighbours)
+    });
+  });
 });

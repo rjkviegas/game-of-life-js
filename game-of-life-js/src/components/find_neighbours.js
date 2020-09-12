@@ -48,6 +48,18 @@ function neighbour_finder_constructor(spec) {
         }
         return [y - 1, x - 1];
     };
+    const all = function () {
+        return {
+            north: undefined,
+            north_east: undefined,
+            east: undefined,
+            south_east: undefined,
+            south: undefined,
+            south_west: undefined,
+            west: undefined,
+            north_west: undefined
+          };
+    };
     return Object.freeze({
         north,
         south,
@@ -56,7 +68,8 @@ function neighbour_finder_constructor(spec) {
         north_east,
         south_east,
         south_west,
-        north_west
+        north_west,
+        all
     });
 }
 
