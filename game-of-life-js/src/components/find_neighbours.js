@@ -51,9 +51,9 @@ function neighbour_finder_constructor(spec) {
     const all = function () {
         return {
             north: north(),
-            north_east: undefined,
-            east: undefined,
-            south_east: undefined,
+            north_east: north_east(),
+            east: east(),
+            south_east: south_east(),
             south: south(),
             south_west: south_west(),
             west: west(),

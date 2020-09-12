@@ -411,5 +411,27 @@ describe("find_neighbour", function () {
       };
       expect(neighbour_finder.all()).toEqual(neighbours)
     });
+    it("for center cell in 3x3 grid", function () {
+      const spec = {
+        grid: [["north west neighbour", "north neighbour", "north east neighbour"],
+               ["west neighbour", "cell", "east neighbour"],
+               ["south west neighbour", "south neighbour", "south east neighbour"]],
+        x: 1,
+        y: 1
+      };
+      expect(spec.grid[1][1]).toEqual("cell");
+      const neighbour_finder = neighbour_finder_constructor(spec);
+      const neighbours = {
+        north: [0, 1],
+        north_east: [0, 2],
+        east: [1, 2],
+        south_east: [2, 2],
+        south: [2, 1],
+        south_west: [2, 0],
+        west: [1, 0],
+        north_west: [0, 0]
+      };
+      expect(neighbour_finder.all()).toEqual(neighbours)
+    });
   });
 });
