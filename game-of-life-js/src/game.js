@@ -1,3 +1,4 @@
+const { cell_checker_constructor } = require("./components/cell_checker");
 const { neighbour_checker_constructor } = require("./components/neighbour_checker");
 const { status_changer_constructor } = require("./components/status_changer");
 
@@ -9,11 +10,16 @@ function game_constructor (grid) {
         let neighbour_spec = { pre_tick_grid, y: i, x: j };
         let status_spec = { grid, y: i, x: j };
         let neighbour_checker = neighbour_checker_constructor(neighbour_spec)
+        let cell_checker = cell_checker_constructor(neighbour_spec);
         let status_changer = status_changer_constructor(status_spec);
-        if (neighbour_checker.total_alive() < 2) {
-          status_changer.make_dead();
-        } else if (neighbour_checker.total_alive() > 2) {
-          status_changer.make_alive();
+        if (cell_checker.is_alive()) {
+          if (neighbour_checker.total_alive() < 2 || neighbour_checker.total_alive() > 3) {
+            status_changer.make_dead();
+          }
+        } else {
+          if (neighbour_checker.total_alive() === 3) {
+            status_changer.make_alive();
+          }
         }
       }
     }

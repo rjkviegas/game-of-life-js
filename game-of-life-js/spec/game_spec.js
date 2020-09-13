@@ -63,12 +63,37 @@ describe("game", function () {
       let game = game_constructor(grid);
       expect(grid[1][1]).toEqual(0);
       game.tick();
-      expect(grid[1][1]).toEqual(1);
+      expect(grid[1][1]).toEqual(0);
       expect(grid).toEqual(
         [[0, 1, 0],
-         [1, 1, 1],
+         [1, 0, 1],
          [0, 1, 0]]
-      )
+      );
+    });
+    describe("2 ticks", function () {
+      it("for 3x3 grid", function () {
+        const grid = (
+          [[0, 1, 0],
+           [1, 1, 1],
+           [0, 1, 0]]
+          );
+        let game = game_constructor(grid);
+        expect(grid[1][1]).toEqual(1);
+        game.tick();
+        expect(grid[1][1]).toEqual(0);
+        expect(grid).toEqual(
+          [[1, 1, 1],
+           [1, 0, 1],
+           [1, 1, 1]]
+        );
+        game = game_constructor(grid);
+        game.tick();
+        expect(grid).toEqual(
+          [[1, 0, 1],
+           [0, 0, 0],
+           [1, 0, 1]]
+        );
+      });
     });
   });
 });
