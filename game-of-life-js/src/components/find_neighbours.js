@@ -49,7 +49,7 @@ function neighbour_finder_constructor(spec) {
         return { y: y - 1, x: x - 1 };
     };
     const all = function () {
-        return {
+        neighbours = {
             north: north(),
             north_east: north_east(),
             east: east(),
@@ -58,7 +58,11 @@ function neighbour_finder_constructor(spec) {
             south_west: south_west(),
             west: west(),
             north_west: north_west()
-          };
+        };
+        Object.keys(neighbours).forEach(function(key) {
+            neighbours[key] === undefined && delete neighbours[key]
+        });
+        return neighbours;
     };
     return Object.freeze({
         north,
