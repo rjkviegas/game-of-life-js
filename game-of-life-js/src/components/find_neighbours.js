@@ -1,5 +1,5 @@
 function neighbour_finder_constructor(spec) {
-    let {grid, x, y} = spec;
+    let {pre_tick_grid, x, y} = spec;
     const north = function () {
         if (y === 0) {
             return undefined;
@@ -7,13 +7,13 @@ function neighbour_finder_constructor(spec) {
         return { y: y - 1, x };
     };
     const south = function () {
-        if (y + 1 >= grid.length) {
+        if (y + 1 >= pre_tick_grid.length) {
             return undefined;
         }
         return { y: y + 1, x };
     };
     const east = function () {
-        if (x + 1 >= grid[y].length) {
+        if (x + 1 >= pre_tick_grid[y].length) {
             return undefined;
         }
         return { y, x: x + 1 };
@@ -25,19 +25,19 @@ function neighbour_finder_constructor(spec) {
         return { y, x: x - 1 };
     };
     const north_east = function () {
-        if (y - 1 < 0 || x + 1 >= grid[y].length) {
+        if (y - 1 < 0 || x + 1 >= pre_tick_grid[y].length) {
             return undefined;
         }
         return { y: y - 1, x: x + 1 };
     };
     const south_east = function () {
-        if (y + 1 >= grid.length || x + 1 >= grid[y].length) {
+        if (y + 1 >= pre_tick_grid.length || x + 1 >= pre_tick_grid[y].length) {
             return undefined;
         }
         return { y: y + 1, x: x + 1 };
     };
     const south_west = function () {
-        if (y + 1 >= grid.length || x - 1 < 0) {
+        if (y + 1 >= pre_tick_grid.length || x - 1 < 0) {
             return undefined;
         }
         return { y: y + 1, x: x - 1 };

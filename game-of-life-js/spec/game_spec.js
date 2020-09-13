@@ -33,5 +33,42 @@ describe("game", function () {
       expect(grid[1][0]).toEqual(0);
       expect(grid[1][1]).toEqual(0);
     });
+    it("for live center cell in 3x3 grid", function () {
+      const grid = (
+        [[0, 0, 0],
+         [0, 1, 0],
+         [0, 0, 0]]
+        );
+      let game = game_constructor(grid);
+      expect(grid[1][1]).toEqual(1);
+      game.tick();
+      expect(grid[1][1]).toEqual(0);
+    });
+    it("for bottom right dead cell in 2x2 grid", function () {
+      const grid = (
+        [[1, 1],
+         [0, 1]]
+        );
+      let game = game_constructor(grid);
+      expect(grid[1][0]).toEqual(0);
+      game.tick();
+      expect(grid[1][0]).toEqual(1);
+    });
+    it("for 3x3 grid", function () {
+      const grid = (
+        [[0, 1, 0],
+         [1, 0, 1],
+         [0, 1, 0]]
+        );
+      let game = game_constructor(grid);
+      expect(grid[1][1]).toEqual(0);
+      game.tick();
+      expect(grid[1][1]).toEqual(1);
+      expect(grid).toEqual(
+        [[0, 1, 0],
+         [1, 1, 1],
+         [0, 1, 0]]
+      )
+    });
   });
 });
